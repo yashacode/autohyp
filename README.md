@@ -12,6 +12,8 @@ Manually doing these tests for many variables can be a tedious task. Autohyp aut
 
 ## Installation
 
+Open the terminal on Mac or the command line on Windows.
+
 1. **Clone the repository:**
 
     ```sh
@@ -33,6 +35,26 @@ Manually doing these tests for many variables can be a tedious task. Autohyp aut
     ```
 
 ## Usage
+
+1. **Create Ecxel document**
+Autohyp requires an Excel file as input. The file should have the following format:
+
+*The first row must contain all the variable names (Age, heart rate, etc...)
+*Each subsequent row contains the clinical data for a single patient. All entries below the first row must be numeric (for binary variables such as mortality, use 1 for yes and 0 for no)
+
+Copy the path of your Excel doc. Finder > Right-click your file > Show info > Right-click where section > Copy file path
+
+2. **Run autohyp**
+
+Go back to the autohyp directory in the terminal. Then run the following:
+
+    ```sh
+    python3 autohyp.py path/yourfile.xlsx
+    ```
+Replace path/yourfile.xlsx with the path you copied in the previous step. Once you run this, all the variables should be printed out in the terminal. You now must choose how to split the patients into two groups. For example, if you choose a binary variable like past medical history of smoking (with 0s and 1s as entries), the patients will be split into smokers and non-smokers. If you chose a continuous variable,
+
+Once you run this all of the 
+
 
 ```sh
 python main.py
