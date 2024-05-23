@@ -1,29 +1,41 @@
 # autohyp
-splits data from an excell sheet into two groups and performs automatic hypothesis tests using all the variables between the two groups.
 
-## Getting Started
+## Description
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+When working with clinical data, we often want to compare variables between two patient populations. For example, how do all the clinical variables differ between patients who have a history of smoking vs. non-smokers? To do this we need to perform different statistical tests depending on the variable.
 
-### Prerequisites
+* for binary variables (ex: mortality) we use a two-proportion z-test
+* for normally distributed continuous variables (ex: heart rate) we use a t-test
+* for skewed continuous variables (ex: MEU) we use a Mann-Whitney test
 
-What things you need to install the software and how to install them
+Manually doing these tests for many variables can be a tedious task. Autohyp automates these hypothesis tests. By simply uploading an Excel sheet, you can now compare all variables in your data set between two patient groups.
 
-```
-Give examples
-```
+## Installation
 
-### Installing
+1. **Clone the repository:**
 
-A step by step series of examples that tell you how to get a development env running
+    ```sh
+    git clone https://github.com/yourusername/your-repository.git
+    cd your-repository
+    ```
 
-Say what the step will be
+2. **Create and activate a virtual environment (optional but strongly recommended):**
 
-```
-Give the example
-```
+    ```sh
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
 
-And repeat
+3. **Install dependencies:**
+
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+## Usage
+
+```sh
+python main.py
 
 ```
 until finished
