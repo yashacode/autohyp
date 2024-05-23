@@ -15,7 +15,7 @@ Manually doing these tests for many variables can be a tedious task. Autohyp aut
 1. **Clone the repository:**
 
     ```sh
-    git clone https://github.com/yourusername/your-repository.git
+    git clone https://github.com/yashacode/autohyp.git
     cd your-repository
     ```
 
