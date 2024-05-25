@@ -48,9 +48,9 @@ Copy the path of your Excel doc. Finder > Right-click your file > Show info > Ri
 
 Go back to the autohyp directory in the terminal. Then run the following:
 
-    ```sh
+    
     python3 autohyp.py path/yourfile.xlsx
-    ```
+    
 Replace path/yourfile.xlsx with the path you copied in the previous step. Once you run this, all the variables should be printed out in the terminal. You now must choose how to split the patients into two groups. For example, if you choose a binary variable like past medical history of smoking (with 0s and 1s as entries), the patients will be split into smokers and non-smokers. If you chose a continuous variable,
 
 Once you run this all of the 
