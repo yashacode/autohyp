@@ -66,7 +66,7 @@ You should now have a file called output.xlsx with the results of the hypothesis
 
 ## Authors
 
-Jacob Epstein
+Jacob Epstein (for RAP-EMCC)
 
 ## License
 
