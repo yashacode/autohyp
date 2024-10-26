@@ -8,8 +8,10 @@ from statsmodels.stats.weightstats import CompareMeans as cm
 
 
 def process(file):
+  min_length = 3
   df = pd.read_excel(file)
   df = df.applymap(lambda x: pd.to_numeric(x, errors='coerce'))
+  df = df.loc[:, df.apply(lambda x: len(x.dropna()) >= min_length)]
 
   #categorize each col
   categorical = []
@@ -18,10 +20,13 @@ def process(file):
   for col in df.columns:
     if is_binary(df, col):
       categorical.append(col)
-    elif normality(df, col, 0.0001):
-      normal.append(col)
     else:
+      normal.append(col)
       non_normal.append(col)
+    # elif normality(df, col, 0.001):
+    #   normal.append(col)
+    # else:
+    #   non_normal.append(col)
 
   #get user input to split the data into 2 groups for comparison
   print("columns: ")
@@ -34,6 +39,7 @@ def process(file):
     group2 = df[df[comparison] == 1]
     group2_name = comparison + "=1"
   else:
+    print(df[comparison].unique())
     split = int(input("enter the value of " + comparison + " for which to split the data:"))
     group1 = df[df[comparison] <= split]
     group1_name = comparison + "<=" + str(split) 
@@ -113,6 +119,9 @@ def compare (columns, group1, group2, df, group1_name="group1", group2_name="gro
     o2, p2 = n_percent(group1[col])
     o3, p3 = n_percent(group2[col])
     data = [(o1, round(o1/p1, 2)),(o2, round(o2/p2, 2)),(o3, round(o3/p3, 2))]
+    # try:
+    #   stat, p_value = proportions_ztest([o2, o3], [p2, p3])
+    # except ZeroDivisionError:
     stat, p_value = proportions_ztest([o2, o3], [p2, p3])
     ci = confint_proportions_2indep(o2,p2,o3,p3)
     entry = {'category': col, 'all patients': str(data[0][0]) + '('+str(data[0][1])+')',
